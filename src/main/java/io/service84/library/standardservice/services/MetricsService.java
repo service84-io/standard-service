@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class MetricsService {
   public static interface MetricsContributor {
     Object metric();
+
     String metricKey();
   }
 
@@ -33,6 +34,6 @@ public class MetricsService {
   }
 
   public synchronized void unregisterReadinessContributor(MetricsContributor metricsContributor) {
-	  metricsContributors.remove(metricsContributor);
+    metricsContributors.remove(metricsContributor);
   }
 }

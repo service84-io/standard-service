@@ -30,6 +30,6 @@ public class HealthService {
   }
 
   public synchronized void unregisterReadinessContributor(HealthContributor healthContributor) {
-	  healthContributors.remove(healthContributor);
+    healthContributors.remove(healthContributor);
   }
 }

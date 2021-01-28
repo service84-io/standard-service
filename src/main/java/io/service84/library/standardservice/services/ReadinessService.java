@@ -50,7 +50,8 @@ public class ReadinessService {
     readinessContributors.add(readinessContributor);
   }
 
-  public synchronized void unregisterReadinessContributor(ReadinessContributor readinessContributor) {
+  public synchronized void unregisterReadinessContributor(
+      ReadinessContributor readinessContributor) {
     readinessContributors.remove(readinessContributor);
   }
 }
