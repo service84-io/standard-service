@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service("C36ABA46-34D7-42A7-8B4E-98125BC54B2F")
 public class HealthService {
   public static interface HealthContributor {
-    Boolean isReady();
+    Boolean isHealthy();
   }
 
   List<HealthContributor> healthContributors = new CopyOnWriteArrayList<>();
@@ -16,7 +16,7 @@ public class HealthService {
   public Boolean isHealthy() {
     for (HealthContributor healthContributor : healthContributors) {
       if (healthContributor != null) {
-        if (!healthContributor.isReady()) {
+        if (!healthContributor.isHealthy()) {
           return Boolean.FALSE;
         }
       }
