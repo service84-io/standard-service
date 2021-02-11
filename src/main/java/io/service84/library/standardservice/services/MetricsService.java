@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service("CB8BAAA5-D6BD-46A0-91AE-D9C076F96598")
 public class MetricsService {
   public static interface MetricsContributor {
-    Object metric();
+    Object value();
 
-    String metricKey();
+    String key();
   }
 
   List<MetricsContributor> metricsContributors = new CopyOnWriteArrayList<>();
@@ -22,7 +22,7 @@ public class MetricsService {
 
     for (MetricsContributor metricsContributor : metricsContributors) {
       if (metricsContributor != null) {
-        metrics.put(metricsContributor.metricKey(), metricsContributor.metric());
+        metrics.put(metricsContributor.key(), metricsContributor.value());
       }
     }
 
