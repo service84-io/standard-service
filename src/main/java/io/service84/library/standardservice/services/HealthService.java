@@ -16,7 +16,11 @@ public class HealthService {
   public Boolean isHealthy() {
     for (HealthContributor healthContributor : healthContributors) {
       if (healthContributor != null) {
-        if (!healthContributor.isHealthy()) {
+        try {
+          if (!healthContributor.isHealthy()) {
+            return Boolean.FALSE;
+          }
+        } catch (Throwable t) {
           return Boolean.FALSE;
         }
       }
