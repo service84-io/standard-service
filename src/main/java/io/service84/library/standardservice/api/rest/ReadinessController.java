@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.service84.library.standardservice.services.ReadinessService;
 
 @RestController("B79499A4-F616-41A6-98A4-C2D7EBF28A54")
-public class Readiness {
+public class ReadinessController {
   @Autowired private ReadinessService service;
 
   @GetMapping(

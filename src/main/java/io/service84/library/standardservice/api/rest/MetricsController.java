@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.service84.library.standardservice.services.MetricsService;
 
 @RestController("522DE21D-310B-4C4F-BAD9-7E764A540CFB")
-public class Metrics {
+public class MetricsController {
   @Autowired private MetricsService service;
 
   @GetMapping(

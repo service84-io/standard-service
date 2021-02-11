@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.service84.library.standardservice.services.HealthService;
 
 @RestController("F54F9031-013A-4447-A62B-A3EFDB56239B")
-public class Health {
+public class HealthController {
   @Autowired private HealthService service;
 
   @GetMapping(
