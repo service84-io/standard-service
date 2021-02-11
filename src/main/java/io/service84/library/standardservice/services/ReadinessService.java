@@ -37,7 +37,11 @@ public class ReadinessService {
   public Boolean isReady() {
     for (ReadinessContributor readinessContributor : readinessContributors) {
       if (readinessContributor != null) {
-        if (!readinessContributor.isReady()) {
+        try {
+          if (!readinessContributor.isReady()) {
+            return Boolean.FALSE;
+          }
+        } catch (Throwable t) {
           return Boolean.FALSE;
         }
       }
