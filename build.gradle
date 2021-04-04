@@ -166,13 +166,13 @@ configurations.all {
 dependencies {
   compileOnly 'org.springframework:spring-context:5.0.0.RELEASE'
   compileOnly 'org.springframework:spring-web:5.0.0.RELEASE'
-  compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+  compileOnly 'javax.servlet:servlet-api:2.2'
 
   ////////////////////////////////
   //Test Dependencies/////////////
   ////////////////////////////////
   // This fulfils the SpringContex and SpringWeb 5.x.x requirement
-  // As well as the JavaXServletAPI 3.x.x requirement
+  // As well as the JavaXServletAPI (2.2)+ requirement
   testImplementation 'org.springframework.boot:spring-boot-starter-web:2.4.2'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.2'

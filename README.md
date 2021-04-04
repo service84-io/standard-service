@@ -18,7 +18,7 @@ This library has a compile-time and run-time dependency on the following librari
 
     org.springframework:spring-context:5.0+
     org.springframework:spring-web:5.0+
-    javax.servlet:javax.servlet-api:3.0+
+    javax.servlet:javax.servlet-api:(2.2)+
 
 ## Build
 This is a Java 11 project that builds best with Gradle 6.3
