@@ -32,8 +32,8 @@ public class ReadinessController {
   public ResponseEntity<Void> isReady() {
     if (service.isReady()) {
       return new ResponseEntity<>(HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
     }
+
+    return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
   }
 }

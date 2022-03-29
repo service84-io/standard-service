@@ -39,10 +39,10 @@ public class ReadinessService {
     public Boolean isReady() {
       if (until.isAfter(LocalDateTime.now())) {
         return Boolean.FALSE;
-      } else {
-        readinessService.unregisterReadinessContributor(this);
-        return Boolean.TRUE;
       }
+
+      readinessService.unregisterReadinessContributor(this);
+      return Boolean.TRUE;
     }
   }
 

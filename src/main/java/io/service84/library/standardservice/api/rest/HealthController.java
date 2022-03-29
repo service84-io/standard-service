@@ -32,8 +32,8 @@ public class HealthController {
   public ResponseEntity<Void> isHealthy() {
     if (service.isHealthy()) {
       return new ResponseEntity<>(HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }
