@@ -14,6 +14,8 @@
 
 package io.service84.library.standardservice.api.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
 public class ServerErrorHandler {
+  private static final Logger logger = LoggerFactory.getLogger(ServerErrorHandler.class);
+
   public static class ErrorDTO {
     public String message;
   }
@@ -29,6 +33,7 @@ public class ServerErrorHandler {
   @ExceptionHandler(Error.class)
   @ResponseBody
   public ResponseEntity<ErrorDTO> handleUncaughtError(Error e) {
+    logger.debug("handleUncaughtError");
     ErrorDTO dto = new ErrorDTO();
     dto.message = e.getMessage();
     return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -37,6 +42,7 @@ public class ServerErrorHandler {
   @ExceptionHandler(RuntimeException.class)
   @ResponseBody
   public ResponseEntity<ErrorDTO> handleUncaughtRuntimeException(RuntimeException e) {
+    logger.debug("handleUncaughtRuntimeException");
     ErrorDTO dto = new ErrorDTO();
     dto.message = e.getMessage();
     return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);

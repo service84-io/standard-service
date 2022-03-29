@@ -19,10 +19,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service("CB8BAAA5-D6BD-46A0-91AE-D9C076F96598")
 public class MetricsService {
+  private static final Logger logger = LoggerFactory.getLogger(MetricsService.class);
+
   public static interface MetricsContributor {
     String key();
 
@@ -32,6 +36,7 @@ public class MetricsService {
   List<MetricsContributor> metricsContributors = new CopyOnWriteArrayList<>();
 
   public Map<String, Object> getMetrics() {
+    logger.debug("getMetrics");
     Map<String, Object> metrics = new HashMap<>();
 
     for (MetricsContributor metricsContributor : metricsContributors) {
@@ -48,6 +53,7 @@ public class MetricsService {
   }
 
   public synchronized void registerMetricsContributor(MetricsContributor metricsContributor) {
+    logger.debug("registerMetricsContributor");
     metricsContributors.add(metricsContributor);
   }
 
@@ -60,6 +66,7 @@ public class MetricsService {
   }
 
   public synchronized void unregisterReadinessContributor(MetricsContributor metricsContributor) {
+    logger.debug("unregisterReadinessContributor");
     metricsContributors.remove(metricsContributor);
   }
 }

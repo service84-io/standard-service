@@ -18,15 +18,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service("26A42823-D5B5-4385-85CB-6E9C4669B85C")
 public class ReadinessService {
+  private static final Logger logger = LoggerFactory.getLogger(ReadinessService.class);
+
   public static interface ReadinessContributor {
     Boolean isReady();
   }
 
   public static class UnreadyUntil implements ReadinessContributor {
+    private static final Logger logger = LoggerFactory.getLogger(UnreadyUntil.class);
+
     private ReadinessService readinessService;
     private LocalDateTime until;
 
@@ -37,6 +43,7 @@ public class ReadinessService {
 
     @Override
     public Boolean isReady() {
+      logger.debug("isReady");
       if (until.isAfter(LocalDateTime.now())) {
         return Boolean.FALSE;
       }
@@ -49,6 +56,7 @@ public class ReadinessService {
   List<ReadinessContributor> readinessContributors = new CopyOnWriteArrayList<>();
 
   public Boolean isReady() {
+    logger.debug("isReady");
     for (ReadinessContributor readinessContributor : readinessContributors) {
       if (readinessContributor != null) {
         try {
@@ -65,11 +73,13 @@ public class ReadinessService {
   }
 
   public synchronized void registerReadinessContributor(ReadinessContributor readinessContributor) {
+    logger.debug("registerReadinessContributor");
     readinessContributors.add(readinessContributor);
   }
 
   public synchronized void unregisterReadinessContributor(
       ReadinessContributor readinessContributor) {
+    logger.debug("unregisterReadinessContributor");
     readinessContributors.remove(readinessContributor);
   }
 }

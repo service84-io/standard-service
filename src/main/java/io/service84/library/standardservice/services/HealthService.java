@@ -17,10 +17,14 @@ package io.service84.library.standardservice.services;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service("C36ABA46-34D7-42A7-8B4E-98125BC54B2F")
 public class HealthService {
+  private static final Logger logger = LoggerFactory.getLogger(HealthService.class);
+
   public static interface HealthContributor {
     Boolean isHealthy();
   }
@@ -28,6 +32,7 @@ public class HealthService {
   List<HealthContributor> healthContributors = new CopyOnWriteArrayList<>();
 
   public Boolean isHealthy() {
+    logger.debug("isHealthy");
     for (HealthContributor healthContributor : healthContributors) {
       if (healthContributor != null) {
         try {
@@ -44,10 +49,12 @@ public class HealthService {
   }
 
   public synchronized void registerReadinessContributor(HealthContributor healthContributor) {
+    logger.debug("registerReadinessContributor");
     healthContributors.add(healthContributor);
   }
 
   public synchronized void unregisterReadinessContributor(HealthContributor healthContributor) {
+    logger.debug("unregisterReadinessContributor");
     healthContributors.remove(healthContributor);
   }
 }

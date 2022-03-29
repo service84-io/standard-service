@@ -28,6 +28,7 @@ versions are (built-tested)
     org.springframework:spring-context:(5.0.0.RELEASE-5.3.3)
     org.springframework:spring-web:(5.0.0.RELEASE-5.3.3)
     javax.servlet:javax.servlet-api:(2.3-3.0.1)
+    org.slf4j:slf4j-api:(1.3.0-1.7.30)
 
 ## Build
 This is a Java 11 project that builds best with Gradle 6.3
