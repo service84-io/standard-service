@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest;
+package io.service84.library.standardservice.api.rest.controller;
 
 import java.util.Map;
 

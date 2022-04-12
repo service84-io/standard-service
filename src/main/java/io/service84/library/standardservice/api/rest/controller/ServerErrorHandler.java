@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest;
+package io.service84.library.standardservice.api.rest.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,21 +22,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.service84.library.standardservice.api.rest.model.ErrorDTO;
+
 @ControllerAdvice
 public class ServerErrorHandler {
   private static final Logger logger = LoggerFactory.getLogger(ServerErrorHandler.class);
-
-  public static class ErrorDTO {
-    public String message;
-
-    public String getMessage() {
-      return message;
-    }
-
-    public void setMessage(String message) {
-      this.message = message;
-    }
-  }
 
   @ExceptionHandler(Error.class)
   @ResponseBody

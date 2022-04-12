@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest;
+package io.service84.library.standardservice.api.rest.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,7 +27,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.ServerErrorHandler.ErrorDTO;
+import io.service84.library.standardservice.api.rest.controller.ServerErrorHandler;
+import io.service84.library.standardservice.api.rest.model.ErrorDTO;
 
 @ExtendWith(SpringExtension.class)
 public class ServerErrorHandlerTests {

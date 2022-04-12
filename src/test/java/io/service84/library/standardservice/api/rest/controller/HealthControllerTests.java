@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest;
+package io.service84.library.standardservice.api.rest.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -30,51 +30,52 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.services.ReadinessService;
+import io.service84.library.standardservice.api.rest.controller.HealthController;
+import io.service84.library.standardservice.services.HealthService;
 
 @ExtendWith(SpringExtension.class)
-public class ReadinessControllerTests {
+public class HealthControllerTests {
   @TestConfiguration
   public static class Configuration {
 
     @Bean
-    public ReadinessController getReadinessController() {
-      return new ReadinessController();
+    public HealthController getHealthController() {
+      return new HealthController();
     }
 
     @Bean
-    public ReadinessService getReadinessService() {
-      return mock(ReadinessService.class);
+    public HealthService getHealthService() {
+      return mock(HealthService.class);
     }
   }
 
   // Test Subject
-  @Autowired private ReadinessController readinessController;
+  @Autowired private HealthController healthController;
 
-  @Autowired private ReadinessService mockReadinessService;
+  @Autowired private HealthService mockHealthService;
 
   @Test
   public void exists() {
-    assertNotNull(readinessController);
-    assertNotNull(mockReadinessService);
+    assertNotNull(healthController);
+    assertNotNull(mockHealthService);
   }
 
   @Test
-  public void ready() {
-    when(mockReadinessService.isReady()).thenReturn(Boolean.TRUE);
-    ResponseEntity<Void> readyResponse = readinessController.isReady();
-    assertEquals(HttpStatus.OK, readyResponse.getStatusCode());
+  public void healthy() {
+    when(mockHealthService.isHealthy()).thenReturn(Boolean.TRUE);
+    ResponseEntity<Void> healthResponse = healthController.isHealthy();
+    assertEquals(HttpStatus.OK, healthResponse.getStatusCode());
   }
 
   @BeforeEach
   public void setup() {
-    reset(mockReadinessService);
+    reset(mockHealthService);
   }
 
   @Test
-  public void unready() {
-    when(mockReadinessService.isReady()).thenReturn(Boolean.FALSE);
-    ResponseEntity<Void> readyResponse = readinessController.isReady();
-    assertEquals(HttpStatus.SERVICE_UNAVAILABLE, readyResponse.getStatusCode());
+  public void unhealthy() {
+    when(mockHealthService.isHealthy()).thenReturn(Boolean.FALSE);
+    ResponseEntity<Void> healthResponse = healthController.isHealthy();
+    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, healthResponse.getStatusCode());
   }
 }

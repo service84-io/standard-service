@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest;
+package io.service84.library.standardservice.api.rest.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,23 +22,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.service84.library.standardservice.services.HealthService;
+import io.service84.library.standardservice.services.ReadinessService;
 
-@RestController("F54F9031-013A-4447-A62B-A3EFDB56239B")
-public class HealthController {
-  private static final Logger logger = LoggerFactory.getLogger(HealthController.class);
+@RestController("B79499A4-F616-41A6-98A4-C2D7EBF28A54")
+public class ReadinessController {
+  private static final Logger logger = LoggerFactory.getLogger(ReadinessController.class);
 
-  @Autowired private HealthService service;
+  @Autowired private ReadinessService service;
 
   @GetMapping(
-      value = "/health",
+      value = "/ready",
       produces = {"application/json"})
-  public ResponseEntity<Void> isHealthy() {
-    logger.debug("isHealthy");
-    if (service.isHealthy()) {
+  public ResponseEntity<Void> isReady() {
+    logger.debug("isReady");
+    if (service.isReady()) {
       return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
   }
 }
