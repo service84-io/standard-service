@@ -54,6 +54,11 @@ public class MetricsControllerTests {
 
   @Autowired private MetricsService mockMetricsService;
 
+  @BeforeEach
+  public void setup() {
+    reset(mockMetricsService);
+  }
+
   @Test
   public void exists() {
     assertNotNull(metricsController);
@@ -68,10 +73,5 @@ public class MetricsControllerTests {
     when(mockMetricsService.getMetrics()).thenReturn(metrics);
     Map<String, Object> gotMetrics = metricsController.getMetrics();
     assertEquals(metrics, gotMetrics);
-  }
-
-  @BeforeEach
-  public void setup() {
-    reset(mockMetricsService);
   }
 }

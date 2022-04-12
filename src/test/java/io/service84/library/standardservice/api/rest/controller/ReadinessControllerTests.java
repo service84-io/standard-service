@@ -52,6 +52,11 @@ public class ReadinessControllerTests {
 
   @Autowired private ReadinessService mockReadinessService;
 
+  @BeforeEach
+  public void setup() {
+    reset(mockReadinessService);
+  }
+
   @Test
   public void exists() {
     assertNotNull(readinessController);
@@ -63,11 +68,6 @@ public class ReadinessControllerTests {
     when(mockReadinessService.isReady()).thenReturn(Boolean.TRUE);
     ResponseEntity<Void> readyResponse = readinessController.isReady();
     assertEquals(HttpStatus.OK, readyResponse.getStatusCode());
-  }
-
-  @BeforeEach
-  public void setup() {
-    reset(mockReadinessService);
   }
 
   @Test

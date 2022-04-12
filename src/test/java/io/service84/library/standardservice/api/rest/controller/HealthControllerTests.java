@@ -52,6 +52,11 @@ public class HealthControllerTests {
 
   @Autowired private HealthService mockHealthService;
 
+  @BeforeEach
+  public void setup() {
+    reset(mockHealthService);
+  }
+
   @Test
   public void exists() {
     assertNotNull(healthController);
@@ -63,11 +68,6 @@ public class HealthControllerTests {
     when(mockHealthService.isHealthy()).thenReturn(Boolean.TRUE);
     ResponseEntity<Void> healthResponse = healthController.isHealthy();
     assertEquals(HttpStatus.OK, healthResponse.getStatusCode());
-  }
-
-  @BeforeEach
-  public void setup() {
-    reset(mockHealthService);
   }
 
   @Test
