@@ -32,14 +32,12 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.controller.MetricsController;
 import io.service84.library.standardservice.services.MetricsService;
 
 @ExtendWith(SpringExtension.class)
 public class MetricsControllerTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public MetricsController getMetricsController() {
       return new MetricsController();

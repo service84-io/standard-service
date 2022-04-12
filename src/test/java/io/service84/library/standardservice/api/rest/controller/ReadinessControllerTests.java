@@ -30,14 +30,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.controller.ReadinessController;
 import io.service84.library.standardservice.services.ReadinessService;
 
 @ExtendWith(SpringExtension.class)
 public class ReadinessControllerTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public ReadinessController getReadinessController() {
       return new ReadinessController();

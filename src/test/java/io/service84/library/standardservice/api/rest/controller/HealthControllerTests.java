@@ -30,14 +30,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.controller.HealthController;
 import io.service84.library.standardservice.services.HealthService;
 
 @ExtendWith(SpringExtension.class)
 public class HealthControllerTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public HealthController getHealthController() {
       return new HealthController();

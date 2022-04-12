@@ -27,14 +27,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.controller.ServerErrorHandler;
 import io.service84.library.standardservice.api.rest.model.ErrorDTO;
 
 @ExtendWith(SpringExtension.class)
 public class ServerErrorHandlerTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public ServerErrorHandler getServerErrorHandler() {
       return new ServerErrorHandler();
