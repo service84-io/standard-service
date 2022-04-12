@@ -88,6 +88,33 @@ public class RequestServiceTests {
     assertEquals("http://example.com/path", url);
   }
 
+  @Test
+  public void getUsualPath() {
+    when(mockHttpServletRequest.getContextPath()).thenReturn("");
+    when(mockHttpServletRequest.getServletPath()).thenReturn("/path");
+    when(mockHttpServletRequest.getPathInfo()).thenReturn(null);
+    String path = requestService.getPath();
+    assertEquals("/path", path);
+  }
+
+  @Test
+  public void getWithContextPath() {
+    when(mockHttpServletRequest.getContextPath()).thenReturn("/context");
+    when(mockHttpServletRequest.getServletPath()).thenReturn("/path");
+    when(mockHttpServletRequest.getPathInfo()).thenReturn(null);
+    String path = requestService.getPath();
+    assertEquals("/context/path", path);
+  }
+
+  @Test
+  public void getWithContextWithInfoPath() {
+    when(mockHttpServletRequest.getContextPath()).thenReturn("/context");
+    when(mockHttpServletRequest.getServletPath()).thenReturn("/path");
+    when(mockHttpServletRequest.getPathInfo()).thenReturn("/info");
+    String path = requestService.getPath();
+    assertEquals("/context/path/info", path);
+  }
+
   @BeforeEach
   private void setup() {
     reset(mockHttpServletRequest);

@@ -57,4 +57,25 @@ public class RequestService {
 
     return null;
   }
+
+  public String getPath() {
+    logger.debug("getPath");
+    if (request != null) {
+      StringBuilder sb = new StringBuilder();
+      sb.append(denull(request.getContextPath()));
+      sb.append(denull(request.getServletPath()));
+      sb.append(denull(request.getPathInfo()));
+      return sb.toString();
+    }
+
+    return null;
+  }
+
+  private String denull(String value) {
+    if (value != null) {
+      return value;
+    }
+
+    return "";
+  }
 }
