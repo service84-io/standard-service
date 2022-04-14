@@ -12,33 +12,32 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest.controller;
+package io.service84.library.standardservice.api.rest.controllers;
+
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.service84.library.standardservice.services.HealthService;
+import io.service84.library.standardservice.services.MetricsService;
 
-@RestController("F54F9031-013A-4447-A62B-A3EFDB56239B")
-public class HealthController {
-  private static final Logger logger = LoggerFactory.getLogger(HealthController.class);
+@RestController("522DE21D-310B-4C4F-BAD9-7E764A540CFB")
+public class MetricsController {
+  private static final Logger logger = LoggerFactory.getLogger(MetricsController.class);
 
-  @Autowired private HealthService service;
+  @Autowired private MetricsService service;
 
   @GetMapping(
-      value = "/health",
+      value = "/metrics",
       produces = {"application/json"})
-  public ResponseEntity<Void> isHealthy() {
-    logger.debug("isHealthy");
-    if (service.isHealthy()) {
-      return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+  @ResponseStatus(HttpStatus.OK)
+  public Map<String, Object> getMetrics() {
+    logger.debug("getMetrics");
+    return service.getMetrics();
   }
 }

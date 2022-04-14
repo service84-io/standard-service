@@ -36,7 +36,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.service84.library.standardservice.api.rest.model.ErrorDTO;
+import io.service84.library.standardservice.api.rest.controllers.ServerErrorHandler;
+import io.service84.library.standardservice.api.rest.models.ErrorDTO;
 import io.service84.library.standardservice.services.RequestService;
 
 @ExtendWith(SpringExtension.class)

@@ -1,4 +1,4 @@
-package io.service84.library.standardservice.api.rest.model;
+package io.service84.library.standardservice.api.rest.models;
 
 public class ErrorDTO {
   public java.time.LocalDateTime timestamp;

@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package io.service84.library.standardservice.api.rest.controller;
+package io.service84.library.standardservice.api.rest.controllers;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import io.service84.library.standardservice.api.rest.model.ErrorDTO;
+import io.service84.library.standardservice.api.rest.models.ErrorDTO;
 import io.service84.library.standardservice.services.RequestService;
 
 @ControllerAdvice
