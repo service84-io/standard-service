@@ -30,7 +30,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class NoContributorMetricsServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public MetricsService getMetricsService() {
       return new MetricsService();

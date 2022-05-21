@@ -37,7 +37,6 @@ import io.service84.library.standardservice.services.ReadinessService.ReadinessC
 public class ReadinessServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public ReadinessService getReadinessService() {
       return new ReadinessService();

@@ -28,7 +28,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class NoContributorHealthServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public HealthService getHealthService() {
       return new HealthService();

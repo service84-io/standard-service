@@ -38,7 +38,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 public class RequestServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public HttpServletRequest getHttpServletRequest() {
       return mock(HttpServletRequest.class);

@@ -28,7 +28,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class NoContributorReadinessServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public ReadinessService getReadinessService() {
       return new ReadinessService();

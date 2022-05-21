@@ -37,7 +37,6 @@ import io.service84.library.standardservice.services.HealthService.HealthContrib
 public class HealthServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public HealthService getHealthService() {
       return new HealthService();

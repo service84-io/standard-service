@@ -39,7 +39,6 @@ import io.service84.library.standardservice.services.MetricsService.MetricsContr
 public class MetricsServiceTests {
   @TestConfiguration
   public static class Configuration {
-
     @Bean
     public MetricsService getMetricsService() {
       return new MetricsService();
