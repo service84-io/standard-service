@@ -31,6 +31,7 @@ def s84JarName = 'standardservice'
 def s84Description = 'Exposes Health, Metric, and Liveness endpoints in a Spring service.'
 def s84GithubBase = 'https://github.com/service84-io/standard-service'
 def s84Version = '1.3.50-SNAPSHOT'
+def s84CoreName = s84JarName.split('-')[0]
 
 // configure all java components to be published
 publishing {
